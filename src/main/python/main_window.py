@@ -411,7 +411,7 @@ class MainWindow(QMainWindow):
 
     def about_vial(self):
         title = "About Vial"
-        text = 'Vial {}<br><br>Python {}<br>Qt {}<br><br>' \
+        text = 'Vial {}<br><br>Python {}<br>Qt {}<br>壳制化QQ群655671222<br>' \
                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
                '<a href="https://get.vial.today/">https://get.vial.today/</a>' \
                .format(qApp.applicationVersion(),
