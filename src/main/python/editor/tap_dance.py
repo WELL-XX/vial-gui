@@ -34,7 +34,8 @@ class TapDanceEntryUI(QObject):
         l.addWidget(w)
         l.setAlignment(w, QtCore.Qt.AlignHCenter)
         l.addSpacing(10)
-        lbl = QLabel("Use <code>TD({})</code> to set up this action in the keymap.".format(self.idx))
+        lbl = QLabel("在键位映射使用<code>TD({})</code>关联此操作.".format(self.idx))
+        # lbl = QLabel("Use <code>TD({})</code> to set up this action in the keymap.".format(self.idx))
         l.addWidget(lbl)
         l.setAlignment(lbl, QtCore.Qt.AlignHCenter)
         l.addStretch()
@@ -42,23 +43,23 @@ class TapDanceEntryUI(QObject):
         self.w2.setLayout(l)
 
     def populate_container(self):
-        self.container.addWidget(QLabel("On tap"), 0, 0)
+        self.container.addWidget(QLabel("短按"), 0, 0) # On tap
         self.kc_on_tap = KeyWidget()
         self.kc_on_tap.changed.connect(self.on_key_changed)
         self.container.addWidget(self.kc_on_tap, 0, 1)
-        self.container.addWidget(QLabel("On hold"), 1, 0)
+        self.container.addWidget(QLabel("按住"), 1, 0) # On hold
         self.kc_on_hold = KeyWidget()
         self.kc_on_hold.changed.connect(self.on_key_changed)
         self.container.addWidget(self.kc_on_hold, 1, 1)
-        self.container.addWidget(QLabel("On double tap"), 2, 0)
+        self.container.addWidget(QLabel("双击"), 2, 0) # On double tap
         self.kc_on_double_tap = KeyWidget()
         self.kc_on_double_tap.changed.connect(self.on_key_changed)
         self.container.addWidget(self.kc_on_double_tap, 2, 1)
-        self.container.addWidget(QLabel("On tap + hold"), 3, 0)
+        self.container.addWidget(QLabel("短按并按住"), 3, 0) # On tap + hold
         self.kc_on_tap_hold = KeyWidget()
         self.kc_on_tap_hold.changed.connect(self.on_key_changed)
         self.container.addWidget(self.kc_on_tap_hold, 3, 1)
-        self.container.addWidget(QLabel("Tapping term (ms)"), 4, 0)
+        self.container.addWidget(QLabel("短按判定时间(毫秒)"), 4, 0) # Tapping term (ms)
         self.txt_tapping_term = QSpinBox()
         self.txt_tapping_term.valueChanged.connect(self.on_timing_changed)
         self.txt_tapping_term.setMinimum(0)
@@ -116,9 +117,9 @@ class TapDance(BasicEditor):
         self.addWidget(self.tabs)
         buttons = QHBoxLayout()
         buttons.addStretch()
-        self.btn_save = QPushButton(tr("TapDance", "Save"))
+        self.btn_save = QPushButton(tr("TapDance", "保存")) # Save
         self.btn_save.clicked.connect(self.on_save)
-        btn_revert = QPushButton(tr("TapDance", "Revert"))
+        btn_revert = QPushButton(tr("TapDance", "恢复")) # Revert
         btn_revert.clicked.connect(self.on_revert)
         buttons.addWidget(self.btn_save)
         buttons.addWidget(btn_revert)
