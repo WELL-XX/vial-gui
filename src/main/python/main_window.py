@@ -185,11 +185,11 @@ class MainWindow(QMainWindow):
         keyboard_lock_act.setShortcut("Ctrl+L")
         keyboard_lock_act.triggered.connect(self.lock_keyboard)
 
-        keyboard_reset_act = QAction(tr("MenuSecurity", "Reboot to bootloader"), self)
+        keyboard_reset_act = QAction(tr("MenuSecurity", "重新启动到引导加载程序"), self)
         keyboard_reset_act.setShortcut("Ctrl+B")
         keyboard_reset_act.triggered.connect(self.reboot_to_bootloader)
 
-        keyboard_layout_menu = self.menuBar().addMenu(tr("Menu", "Keyboard layout"))
+        keyboard_layout_menu = self.menuBar().addMenu(tr("Menu", "键盘布局"))
         keymap_group = QActionGroup(self)
         selected_keymap = self.settings.value("keymap")
         for idx, keymap in enumerate(KEYMAPS):
@@ -205,14 +205,14 @@ class MainWindow(QMainWindow):
         if keymap_group.checkedAction() is None:
             keymap_group.actions()[0].setChecked(True)
 
-        self.security_menu = self.menuBar().addMenu(tr("Menu", "Security"))
+        self.security_menu = self.menuBar().addMenu(tr("Menu", "安全"))
         self.security_menu.addAction(keyboard_unlock_act)
         self.security_menu.addAction(keyboard_lock_act)
         self.security_menu.addSeparator()
         self.security_menu.addAction(keyboard_reset_act)
 
         if sys.platform != "emscripten":
-            self.theme_menu = self.menuBar().addMenu(tr("Menu", "Theme"))
+            self.theme_menu = self.menuBar().addMenu(tr("Menu", "主题"))
             theme_group = QActionGroup(self)
             selected_theme = self.get_theme()
             for name, _ in [("System", None)] + themes.themes:
@@ -226,11 +226,11 @@ class MainWindow(QMainWindow):
             if theme_group.checkedAction() is None:
                 theme_group.actions()[0].setChecked(True)
 
-        about_vial_act = QAction(tr("MenuAbout", "About Vial..."), self)
+        about_vial_act = QAction(tr("MenuAbout", "关于 Vial..."), self)
         about_vial_act.triggered.connect(self.about_vial)
         self.about_keyboard_act = QAction("", self)
         self.about_keyboard_act.triggered.connect(self.about_keyboard)
-        self.about_menu = self.menuBar().addMenu(tr("Menu", "About"))
+        self.about_menu = self.menuBar().addMenu(tr("Menu", "关于"))
         self.about_menu.addAction(self.about_keyboard_act)
         self.about_menu.addAction(about_vial_act)
 
@@ -392,7 +392,7 @@ class MainWindow(QMainWindow):
         themes.Theme.set_theme(theme)
         self.settings.setValue("theme", theme)
         msg = QMessageBox()
-        msg.setText(tr("MainWindow", "In order to fully apply the theme you should restart the application."))
+        msg.setText(tr("MainWindow", "为了完全应用主题，您应该重新启动应用程序."))
         msg.exec_()
 
     def on_tab_changed(self, index):
@@ -410,7 +410,7 @@ class MainWindow(QMainWindow):
         self.current_tab = new_tab
 
     def about_vial(self):
-        title = "About Vial"
+        title = "关于 Vial"
         text = 'Vial {}<br><br>Python {}<br>Qt {}<br>汉化：壳制化QQ群655671222<br>' \
                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
                '<a href="https://get.vial.today/">https://get.vial.today/</a>' \
