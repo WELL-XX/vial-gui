@@ -72,13 +72,13 @@ class OptionsUI(QWidget):
 
         container = QVBoxLayout()
 
-        self.opt_activation_trigger_down = CheckBoxNoPadding("Activate when the trigger key is pressed down")
-        self.opt_activation_required_mod_down = CheckBoxNoPadding("Activate when a necessary modifier is pressed down")
-        self.opt_activation_negative_mod_up = CheckBoxNoPadding("Activate when a negative modifier is released")
-        self.opt_one_mod = CheckBoxNoPadding("Activate on one modifier")
-        self.opt_no_reregister_trigger = CheckBoxNoPadding("Don't deactivate when another key is pressed down")
+        self.opt_activation_trigger_down = CheckBoxNoPadding("在触发按键按下时激活") # Activate when the trigger key is pressed down
+        self.opt_activation_required_mod_down = CheckBoxNoPadding("在触发修饰键按下时激活") # Activate when a necessary modifier is pressed down
+        self.opt_activation_negative_mod_up = CheckBoxNoPadding("在失效修饰键抬起时激活") # Activate when a negative modifier is released
+        self.opt_one_mod = CheckBoxNoPadding("任意修饰键按下时激活") # Activate on one modifier
+        self.opt_no_reregister_trigger = CheckBoxNoPadding("仅当其他按键按下时失效") # Don't deactivate when another key is pressed down
         self.opt_no_unregister_on_other_key_down = CheckBoxNoPadding(
-            "Don't register the trigger key again after the override is deactivated")
+            "键值覆盖失效后不再触发") #Don't register the trigger key again after the override is deactivated
 
         for w in [self.opt_activation_trigger_down, self.opt_activation_required_mod_down,
                   self.opt_activation_negative_mod_up, self.opt_one_mod, self.opt_no_reregister_trigger,
@@ -122,10 +122,10 @@ class LayersUI(QWidget):
         for w in self.layer_chks:
             w.stateChanged.connect(self.on_change)
         btn_all_layers = QToolButton()
-        btn_all_layers.setText(tr("KeyOverride", "Enable all"))
+        btn_all_layers.setText(tr("KeyOverride", "启用全部"))  # Enable all
         btn_all_layers.setToolButtonStyle(Qt.ToolButtonTextOnly)
         btn_no_layers = QToolButton()
-        btn_no_layers.setText(tr("KeyOverride", "Disable all"))
+        btn_no_layers.setText(tr("KeyOverride", "禁用全部")) # Disable all
         btn_no_layers.setToolButtonStyle(Qt.ToolButtonTextOnly)
         btn_all_layers.clicked.connect(self.on_enable_all_layers)
         btn_no_layers.clicked.connect(self.on_disable_all_layers)
@@ -199,28 +199,28 @@ class KeyOverrideEntryUI(QObject):
         self.w2 = make_scrollable(l)
 
     def populate_container(self):
-        self.container.addWidget(QLabel("Enable"), 0, 0)
+        self.container.addWidget(QLabel("启用功能"), 0, 0) # Enable
         self.container.addWidget(self.enable_chk, 0, 1)
 
-        self.container.addWidget(QLabel("Enable on layers"), 1, 0)
+        self.container.addWidget(QLabel("在指定层上启用"), 1, 0) # Enable on layers
         self.container.addWidget(self.layers, 1, 1)
 
-        self.container.addWidget(QLabel("Trigger"), 2, 0)
+        self.container.addWidget(QLabel("触发按键"), 2, 0) # Trigger
         self.container.addWidget(self.trigger_key, 2, 1)
 
-        self.container.addWidget(QLabel("Trigger mods"), 3, 0)
+        self.container.addWidget(QLabel("触发修饰键"), 3, 0) # Trigger mods
         self.container.addWidget(self.trigger_mods, 3, 1)
 
-        self.container.addWidget(QLabel("Negative mods"), 4, 0)
+        self.container.addWidget(QLabel("失效修饰键"), 4, 0) # Negative mods
         self.container.addWidget(self.negative_mods, 4, 1)
 
-        self.container.addWidget(QLabel("Suppressed mods"), 5, 0)
+        self.container.addWidget(QLabel("禁用修饰键"), 5, 0) # Suppressed mods
         self.container.addWidget(self.suppressed_mods, 5, 1)
 
-        self.container.addWidget(QLabel("Replacement"), 6, 0)
+        self.container.addWidget(QLabel("输出按键"), 6, 0) # Replacement
         self.container.addWidget(self.key_replacement, 6, 1)
 
-        self.container.addWidget(QLabel("Options"), 7, 0)
+        self.container.addWidget(QLabel("选项"), 7, 0) # Options
         self.container.addWidget(self.options, 7, 1)
 
     def widget(self):
