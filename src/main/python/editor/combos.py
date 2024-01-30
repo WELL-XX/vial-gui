@@ -35,13 +35,13 @@ class ComboEntryUI(QObject):
         for x in range(4):
             kc_widget = KeyWidget()
             kc_widget.changed.connect(self.on_key_changed)
-            self.container.addWidget(QLabel("Key {}".format(x + 1)), x, 0)
+            self.container.addWidget(QLabel("按键{}".format(x + 1)), x, 0) # Key
             self.container.addWidget(kc_widget, x, 1)
             self.kc_inputs.append(kc_widget)
 
         self.kc_output = KeyWidget()
         self.kc_output.changed.connect(self.on_key_changed)
-        self.container.addWidget(QLabel("Output key"), 4, 0)
+        self.container.addWidget(QLabel("输出按键"), 4, 0)  # Output key
         self.container.addWidget(self.kc_output, 4, 1)
 
     def widget(self):
