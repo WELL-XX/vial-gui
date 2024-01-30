@@ -159,7 +159,7 @@ class FilteredTabbedKeycodes(QTabWidget):
         self.keycode_filter = keycode_filter
 
         self.tabs = [
-            Tab(self, "Basic", [
+            Tab(self, "基本按键", [ # Basic
                 (ansi_100, KEYCODES_SPECIAL + KEYCODES_SHIFTED),
                 (ansi_80, KEYCODES_SPECIAL + KEYCODES_BASIC_NUMPAD + KEYCODES_SHIFTED),
                 (ansi_70, KEYCODES_SPECIAL + KEYCODES_BASIC_NUMPAD + KEYCODES_BASIC_NAV + KEYCODES_SHIFTED),
@@ -172,16 +172,16 @@ class FilteredTabbedKeycodes(QTabWidget):
                  KEYCODES_ISO_KR),
                 (None, KEYCODES_ISO),
             ], prefix_buttons=[("Any", -1)]),
-            SimpleTab(self, "Layers", KEYCODES_LAYERS),
-            Tab(self, "Quantum", [(mods, (KEYCODES_BOOT + KEYCODES_QUANTUM)),
+            SimpleTab(self, "层控制", KEYCODES_LAYERS), # Layers
+            Tab(self, "QUANTUM按键", [(mods, (KEYCODES_BOOT + KEYCODES_QUANTUM)), # Quantum
                                   (mods_narrow, (KEYCODES_BOOT + KEYCODES_QUANTUM)),
                                   (None, (KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM))]),
-            SimpleTab(self, "Backlight", KEYCODES_BACKLIGHT),
-            SimpleTab(self, "App, Media and Mouse", KEYCODES_MEDIA),
-            SimpleTab(self, "MIDI", KEYCODES_MIDI),
-            SimpleTab(self, "Tap Dance", KEYCODES_TAP_DANCE),
-            SimpleTab(self, "User", KEYCODES_USER),
-            SimpleTab(self, "Macro", KEYCODES_MACRO),
+            SimpleTab(self, "灯光控制", KEYCODES_BACKLIGHT), # Backlight
+            SimpleTab(self, "程序和鼠标", KEYCODES_MEDIA), # App, Media and Mouse
+            SimpleTab(self, "MIDI", KEYCODES_MIDI), # MIDI
+            SimpleTab(self, "按键复用", KEYCODES_TAP_DANCE), # Tap Dance
+            SimpleTab(self, "自定义", KEYCODES_USER), # User
+            SimpleTab(self, "宏", KEYCODES_MACRO), # Macro
         ]
 
         for tab in self.tabs:
