@@ -26,7 +26,7 @@ class LinuxRecorder(QWidget):
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.X11BypassWindowManagerHint)
 
         layout = QVBoxLayout()
-        btn = QPushButton(tr("MacroRecorder", "Stop recording"))
+        btn = QPushButton(tr("MacroRecorder", "停止记录")) # Stop recording
         btn.clicked.connect(self.on_stop)
         layout.addWidget(btn)
 
