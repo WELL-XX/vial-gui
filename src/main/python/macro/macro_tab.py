@@ -31,32 +31,32 @@ class MacroTab(QVBoxLayout):
         self.container = QGridLayout()
 
         menu_record = QMenu()
-        menu_record.addAction(tr("MacroRecorder", "Append to current"))\
-            .triggered.connect(lambda: self.record.emit(self, True))
-        menu_record.addAction(tr("MacroRecorder", "Replace everything"))\
-            .triggered.connect(lambda: self.record.emit(self, False))
+        menu_record.addAction(tr("MacroRecorder", "附加到当前"))\
+            .triggered.connect(lambda: self.record.emit(self, True)) # Append to current
+        menu_record.addAction(tr("MacroRecorder", "替换全部"))\
+            .triggered.connect(lambda: self.record.emit(self, False)) # Replace everything
 
-        self.btn_record = QPushButton(tr("MacroRecorder", "Record macro"))
+        self.btn_record = QPushButton(tr("MacroRecorder", "录制宏")) # Record macro
         self.btn_record.setMenu(menu_record)
         if not enable_recorder:
             self.btn_record.hide()
 
-        self.btn_record_stop = QPushButton(tr("MacroRecorder", "Stop recording"))
+        self.btn_record_stop = QPushButton(tr("MacroRecorder", "停止记录")) # Stop recording
         self.btn_record_stop.clicked.connect(lambda: self.record_stop.emit())
         self.btn_record_stop.hide()
 
         self.btn_add = QToolButton()
-        self.btn_add.setText(tr("MacroRecorder", "Add action"))
+        self.btn_add.setText(tr("MacroRecorder", "添加动作"))  # Add action
         self.btn_add.setToolButtonStyle(Qt.ToolButtonTextOnly)
         self.btn_add.clicked.connect(self.on_add)
 
         self.btn_tap_enter = QToolButton()
-        self.btn_tap_enter.setText(tr("MacroRecorder", "Tap Enter"))
+        self.btn_tap_enter.setText(tr("MacroRecorder", "按Enter键")) # Tap Enter
         self.btn_tap_enter.setToolButtonStyle(Qt.ToolButtonTextOnly)
         self.btn_tap_enter.clicked.connect(self.on_tap_enter)
 
         self.btn_text_window = QToolButton()
-        self.btn_text_window.setText(tr("MacroRecorder", "Open Text Editor..."))
+        self.btn_text_window.setText(tr("MacroRecorder", "打开编辑器...")) # Open Text Editor
         self.btn_text_window.setToolButtonStyle(Qt.ToolButtonTextOnly)
         self.btn_text_window.clicked.connect(self.on_text_window)
 
