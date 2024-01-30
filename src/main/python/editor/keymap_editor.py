@@ -32,7 +32,7 @@ class KeymapEditor(BasicEditor):
 
         self.layout_layers = QHBoxLayout()
         self.layout_size = QVBoxLayout()
-        layer_label = QLabel(tr("KeymapEditor", "Layer"))
+        layer_label = QLabel(tr("KeymapEditor", "层")) # Layer
 
         layout_labels_container = QHBoxLayout()
         layout_labels_container.addWidget(layer_label)
@@ -136,8 +136,8 @@ class KeymapEditor(BasicEditor):
     def restore_layout(self, data):
         if json.loads(data.decode("utf-8")).get("uid") != self.keyboard.keyboard_id:
             ret = QMessageBox.question(self.widget(), "",
-                                       tr("KeymapEditor", "Saved keymap belongs to a different keyboard,"
-                                                          " are you sure you want to continue?"),
+                                       tr("KeymapEditor", "保存的键盘映射属于不同的键盘,"
+                                                          " 你确定要继续吗?"),
                                        QMessageBox.Yes | QMessageBox.No)
             if ret != QMessageBox.Yes:
                 return
