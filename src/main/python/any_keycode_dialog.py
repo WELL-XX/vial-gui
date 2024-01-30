@@ -10,7 +10,7 @@ class AnyKeycodeDialog(QDialog):
     def __init__(self, initial):
         super().__init__()
 
-        self.setWindowTitle(tr("AnyKeycodeDialog", "Enter an arbitrary keycode"))
+        self.setWindowTitle(tr("AnyKeycodeDialog", "输入任意键值")) # Enter an arbitrary keycode
 
         self.buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
         self.buttons.accepted.connect(self.accept)
@@ -41,15 +41,15 @@ class AnyKeycodeDialog(QDialog):
 
         if not text:
             self.value = ""
-            self.lbl_computed.setText(tr("AnyKeycodeDialog", "Enter an expression"))
+            self.lbl_computed.setText(tr("AnyKeycodeDialog", "输入键值")) # Enter an expression
         elif err:
             self.value = ""
-            self.lbl_computed.setText(tr("AnyKeycodeDialog", "Invalid input: {}").format(err))
+            self.lbl_computed.setText(tr("AnyKeycodeDialog", "无效输入: {}").format(err)) # Invalid input
         elif isinstance(value, int):
             self.value = Keycode.serialize(value)
-            self.lbl_computed.setText(tr("AnyKeycodeDialog", "Computed value: 0x{:X}").format(value))
+            self.lbl_computed.setText(tr("AnyKeycodeDialog", "对应键值: 0x{:X}").format(value)) # Computed value
         else:
             self.value = ""
-            self.lbl_computed.setText(tr("AnyKeycodeDialog", "Invalid input"))
+            self.lbl_computed.setText(tr("AnyKeycodeDialog", "无效输入")) # Invalid input
 
         self.buttons.button(QDialogButtonBox.Ok).setEnabled(self.value != "")
