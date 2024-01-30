@@ -163,14 +163,14 @@ class QmkRgblightHandler(BasicHandler):
 
         row = container.rowCount()
 
-        self.lbl_underglow_effect = QLabel(tr("RGBConfigurator", "Underglow Effect"))
+        self.lbl_underglow_effect = QLabel(tr("RGBConfigurator", "底灯灯效")) # Underglow Effect
         container.addWidget(self.lbl_underglow_effect, row, 0)
         self.underglow_effect = QComboBox()
         for ef in QMK_RGBLIGHT_EFFECTS:
             self.underglow_effect.addItem(ef.name)
         container.addWidget(self.underglow_effect, row, 1)
 
-        self.lbl_underglow_brightness = QLabel(tr("RGBConfigurator", "Underglow Brightness"))
+        self.lbl_underglow_brightness = QLabel(tr("RGBConfigurator", "底灯亮度")) # Underglow Brightness
         container.addWidget(self.lbl_underglow_brightness, row + 1, 0)
         self.underglow_brightness = QSlider(QtCore.Qt.Horizontal)
         self.underglow_brightness.setMinimum(0)
@@ -178,7 +178,7 @@ class QmkRgblightHandler(BasicHandler):
         self.underglow_brightness.valueChanged.connect(self.on_underglow_brightness_changed)
         container.addWidget(self.underglow_brightness, row + 1, 1)
 
-        self.lbl_underglow_color = QLabel(tr("RGBConfigurator", "Underglow Color"))
+        self.lbl_underglow_color = QLabel(tr("RGBConfigurator", "底灯颜色")) # Underglow Color
         container.addWidget(self.lbl_underglow_color, row + 2, 0)
         self.underglow_color = ClickableLabel(" ")
         self.underglow_color.clicked.connect(self.on_underglow_color)
@@ -241,7 +241,7 @@ class QmkBacklightHandler(BasicHandler):
 
         row = container.rowCount()
 
-        self.lbl_backlight_brightness = QLabel(tr("RGBConfigurator", "Backlight Brightness"))
+        self.lbl_backlight_brightness = QLabel(tr("RGBConfigurator", "按键灯亮度")) # Backlight Brightness
         container.addWidget(self.lbl_backlight_brightness, row, 0)
         self.backlight_brightness = QSlider(QtCore.Qt.Horizontal)
         self.backlight_brightness.setMinimum(0)
@@ -249,7 +249,7 @@ class QmkBacklightHandler(BasicHandler):
         self.backlight_brightness.valueChanged.connect(self.on_backlight_brightness_changed)
         container.addWidget(self.backlight_brightness, row, 1)
 
-        self.lbl_backlight_breathing = QLabel(tr("RGBConfigurator", "Backlight Breathing"))
+        self.lbl_backlight_breathing = QLabel(tr("RGBConfigurator", "按键灯呼吸"))  # Backlight Breathing
         container.addWidget(self.lbl_backlight_breathing, row + 1, 0)
         self.backlight_breathing = QCheckBox()
         self.backlight_breathing.stateChanged.connect(self.on_backlight_breathing_changed)
@@ -282,7 +282,7 @@ class VialRGBHandler(BasicHandler):
 
         row = container.rowCount()
 
-        self.lbl_rgb_effect = QLabel(tr("RGBConfigurator", "RGB Effect"))
+        self.lbl_rgb_effect = QLabel(tr("RGBConfigurator", "RGB灯效")) # RGB Effect
         container.addWidget(self.lbl_rgb_effect, row, 0)
         self.rgb_effect = QComboBox()
         self.rgb_effect.addItem("0")
@@ -292,13 +292,13 @@ class VialRGBHandler(BasicHandler):
         self.rgb_effect.currentIndexChanged.connect(self.on_rgb_effect_changed)
         container.addWidget(self.rgb_effect, row, 1)
 
-        self.lbl_rgb_color = QLabel(tr("RGBConfigurator", "RGB Color"))
+        self.lbl_rgb_color = QLabel(tr("RGBConfigurator", "RGB颜色")) # RGB Color
         container.addWidget(self.lbl_rgb_color, row + 1, 0)
         self.rgb_color = ClickableLabel(" ")
         self.rgb_color.clicked.connect(self.on_rgb_color)
         container.addWidget(self.rgb_color, row + 1, 1)
 
-        self.lbl_rgb_brightness = QLabel(tr("RGBConfigurator", "RGB Brightness"))
+        self.lbl_rgb_brightness = QLabel(tr("RGBConfigurator", "RGB亮度")) # RGB Brightness
         container.addWidget(self.lbl_rgb_brightness, row + 2, 0)
         self.rgb_brightness = QSlider(QtCore.Qt.Horizontal)
         self.rgb_brightness.setMinimum(0)
@@ -306,7 +306,7 @@ class VialRGBHandler(BasicHandler):
         self.rgb_brightness.valueChanged.connect(self.on_rgb_brightness_changed)
         container.addWidget(self.rgb_brightness, row + 2, 1)
 
-        self.lbl_rgb_speed = QLabel(tr("RGBConfigurator", "RGB Speed"))
+        self.lbl_rgb_speed = QLabel(tr("RGBConfigurator", "RGB速度")) # RGB Speed
         container.addWidget(self.lbl_rgb_speed, row + 3, 0)
         self.rgb_speed = QSlider(QtCore.Qt.Horizontal)
         self.rgb_speed.setMinimum(0)
@@ -404,7 +404,7 @@ class RGBConfigurator(BasicEditor):
         self.addStretch()
         buttons = QHBoxLayout()
         buttons.addStretch()
-        save_btn = QPushButton(tr("RGBConfigurator", "Save"))
+        save_btn = QPushButton(tr("RGBConfigurator", "保存")) # Save
         buttons.addWidget(save_btn)
         save_btn.clicked.connect(self.on_save)
         self.addLayout(buttons)
