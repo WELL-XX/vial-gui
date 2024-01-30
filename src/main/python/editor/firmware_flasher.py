@@ -123,7 +123,7 @@ class FirmwareFlasher(BasicEditor):
         self.txt_file_selector.setReadOnly(True)
         file_selector.addWidget(self.txt_file_selector)
         self.btn_select_file = QToolButton()
-        self.btn_select_file.setText(tr("Flasher", "Select file..."))
+        self.btn_select_file.setText(tr("Flasher", "选择文件...")) # Select file...
         self.btn_select_file.clicked.connect(self.on_click_select_file)
         file_selector.addWidget(self.btn_select_file)
         self.addLayout(file_selector)
@@ -136,12 +136,12 @@ class FirmwareFlasher(BasicEditor):
         self.progress_bar.setRange(0, 100)
         progress_flash.addWidget(self.progress_bar)
         self.btn_flash = QToolButton()
-        self.btn_flash.setText(tr("Flasher", "Flash"))
+        self.btn_flash.setText(tr("Flasher", "刷写固件")) # Flash
         self.btn_flash.clicked.connect(self.on_click_flash)
         progress_flash.addWidget(self.btn_flash)
         self.chk_restore_keymap = QCheckBox(main)
         self.chk_restore_keymap.hide()
-        self.chk_restore_keymap.setText(tr("Flasher", "Restore current layout after flashing"))
+        self.chk_restore_keymap.setText(tr("Flasher", "刷写固件后恢复当前配置")) # Restore current layout after flashing
         self.chk_restore_keymap.setChecked(True)
         self.addWidget(self.chk_restore_keymap)
         self.addLayout(progress_flash)
