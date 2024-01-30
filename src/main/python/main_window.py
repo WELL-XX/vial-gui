@@ -81,10 +81,10 @@ class MainWindow(QMainWindow):
         self.matrix_tester = MatrixTest(self.layout_editor)
         self.rgb_configurator = RGBConfigurator()
 
-        self.editors = [(self.keymap_editor, "Keymap"), (self.layout_editor, "Layout"), (self.macro_recorder, "Macros"),
-                        (self.rgb_configurator, "Lighting"), (self.tap_dance, "Tap Dance"), (self.combos, "Combos"),
-                        (self.key_override, "Key Overrides"), (self.qmk_settings, "QMK Settings"),
-                        (self.matrix_tester, "Matrix tester"), (self.firmware_flasher, "Firmware updater")]
+        self.editors = [(self.keymap_editor, "键位映射Keymap"), (self.layout_editor, "布局编辑Layout"), (self.macro_recorder, "宏功能Macros"),
+                        (self.rgb_configurator, "灯光控制Lighting"), (self.tap_dance, "按键复用Tap Dance"), (self.combos, "组合键Combos"),
+                        (self.key_override, "键值覆盖Key Overrides"), (self.qmk_settings, "QMK设置QMK Settings"),
+                        (self.matrix_tester, "矩阵测试Matrix tester"), (self.firmware_flasher, "固件更新Firmware updater")]
 
         Unlocker.global_layout_editor = self.layout_editor
         Unlocker.global_main_window = self
@@ -94,11 +94,11 @@ class MainWindow(QMainWindow):
         self.tabs.currentChanged.connect(self.on_tab_changed)
         self.refresh_tabs()
 
-        no_devices = 'No devices detected. Connect a Vial-compatible device and press "Refresh"<br>' \
-                     'or select "File" → "Download VIA definitions" in order to enable support for VIA keyboards.'
+        no_devices = '没有检测到设备。连接一个与Vial兼容的设备并点击"刷新"按钮"<br>' \
+                     '或选择"文件" → "下载VIA文件"开启VIA键盘支持.'
         if sys.platform.startswith("linux"):
-            no_devices += '<br><br>On Linux you need to set up a custom udev rule for keyboards to be detected. ' \
-                          'Follow the instructions linked below:<br>' \
+            no_devices += '<br><br>在Linux上,您需要设置自定义udev规则以便键盘被检测到. ' \
+                          '请按照以下链接中的说明进行操作:<br>' \
                           '<a href="https://get.vial.today/manual/linux-udev.html">https://get.vial.today/manual/linux-udev.html</a>'
         self.lbl_no_devices = QLabel(tr("MainWindow", no_devices))
         self.lbl_no_devices.setTextFormat(Qt.RichText)
@@ -145,29 +145,29 @@ class MainWindow(QMainWindow):
             QTimer.singleShot(100, vialglue.notify_ready)
 
     def init_menu(self):
-        layout_load_act = QAction(tr("MenuFile", "Load saved layout..."), self)
+        layout_load_act = QAction(tr("MenuFile", "加载保存的布局..."), self)
         layout_load_act.setShortcut("Ctrl+O")
         layout_load_act.triggered.connect(self.on_layout_load)
 
-        layout_save_act = QAction(tr("MenuFile", "Save current layout..."), self)
+        layout_save_act = QAction(tr("MenuFile", "保存当前布局..."), self)
         layout_save_act.setShortcut("Ctrl+S")
         layout_save_act.triggered.connect(self.on_layout_save)
 
-        sideload_json_act = QAction(tr("MenuFile", "Sideload VIA JSON..."), self)
+        sideload_json_act = QAction(tr("MenuFile", "加载VIA JSON文件..."), self)
         sideload_json_act.triggered.connect(self.on_sideload_json)
 
-        download_via_stack_act = QAction(tr("MenuFile", "Download VIA definitions"), self)
+        download_via_stack_act = QAction(tr("MenuFile", "下载VIA定义文件"), self)
         download_via_stack_act.triggered.connect(self.load_via_stack_json)
 
-        load_dummy_act = QAction(tr("MenuFile", "Load dummy JSON..."), self)
+        load_dummy_act = QAction(tr("MenuFile", "加载虚拟JSON..."), self)
         load_dummy_act.triggered.connect(self.on_load_dummy)
 
-        exit_act = QAction(tr("MenuFile", "Exit"), self)
+        exit_act = QAction(tr("MenuFile", "退出Vial"), self)
         exit_act.setShortcut("Ctrl+Q")
         exit_act.triggered.connect(self.close)
 
         if sys.platform != "emscripten":
-            file_menu = self.menuBar().addMenu(tr("Menu", "File"))
+            file_menu = self.menuBar().addMenu(tr("Menu", "文件"))
             file_menu.addAction(layout_load_act)
             file_menu.addAction(layout_save_act)
             file_menu.addSeparator()
@@ -177,11 +177,11 @@ class MainWindow(QMainWindow):
             file_menu.addSeparator()
             file_menu.addAction(exit_act)
 
-        keyboard_unlock_act = QAction(tr("MenuSecurity", "Unlock"), self)
+        keyboard_unlock_act = QAction(tr("MenuSecurity", "解锁"), self)
         keyboard_unlock_act.setShortcut("Ctrl+U")
         keyboard_unlock_act.triggered.connect(self.unlock_keyboard)
 
-        keyboard_lock_act = QAction(tr("MenuSecurity", "Lock"), self)
+        keyboard_lock_act = QAction(tr("MenuSecurity", "锁定"), self)
         keyboard_lock_act.setShortcut("Ctrl+L")
         keyboard_lock_act.triggered.connect(self.lock_keyboard)
 
@@ -411,7 +411,7 @@ class MainWindow(QMainWindow):
 
     def about_vial(self):
         title = "About Vial"
-        text = 'Vial {}<br><br>Python {}<br>Qt {}<br>壳制化QQ群655671222<br>' \
+        text = 'Vial {}<br><br>Python {}<br>Qt {}<br>汉化：壳制化QQ群655671222<br>' \
                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
                '<a href="https://get.vial.today/">https://get.vial.today/</a>' \
                .format(qApp.applicationVersion(),
