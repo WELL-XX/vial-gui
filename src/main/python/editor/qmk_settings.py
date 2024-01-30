@@ -104,13 +104,13 @@ class QmkSettings(BasicEditor):
         self.addWidget(self.tabs_widget)
         buttons = QHBoxLayout()
         buttons.addStretch()
-        self.btn_save = QPushButton(tr("QmkSettings", "Save"))
+        self.btn_save = QPushButton(tr("QmkSettings", "保存")) # Save
         self.btn_save.clicked.connect(self.save_settings)
         buttons.addWidget(self.btn_save)
-        self.btn_undo = QPushButton(tr("QmkSettings", "Undo"))
+        self.btn_undo = QPushButton(tr("QmkSettings", "撤销")) # Undo
         self.btn_undo.clicked.connect(self.reload_settings)
         buttons.addWidget(self.btn_undo)
-        btn_reset = QPushButton(tr("QmkSettings", "Reset"))
+        btn_reset = QPushButton(tr("QmkSettings", "重置")) # Reset
         btn_reset.clicked.connect(self.reset_settings)
         buttons.addWidget(btn_reset)
         self.addLayout(buttons)
