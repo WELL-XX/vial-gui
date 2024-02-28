@@ -859,11 +859,11 @@ def recreate_keyboard_keycodes(keyboard):
                                    "暂时切换到该层，按下下一个键后，切回默认层"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("TO",
-                                   "切换到该层 layer {} "))
+                                   "切换到该层"))
 
     for x in range(min(layers, 16)):
         KEYCODES_LAYERS.append(Keycode("LT{}(kc)".format(x), "LT {}\n(kc)".format(x),
-                                       "单击触发键值，长按切换到层 layer {} ".format(x), masked=True))
+                                       "单击触发键值，长按切换到层 {} ".format(x), masked=True))
 
     KEYCODES_MACRO.clear()
     for x in range(keyboard.macro_count):
