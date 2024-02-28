@@ -844,26 +844,26 @@ def recreate_keyboard_keycodes(keyboard):
 
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("MO",
-                                   "Momentarily turn on layer when pressed (requires KC_TRNS on destination layer)"))
+                                   "按下时暂时切换到该层(松开恢复到默认层)"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("DF",
-                                   "Set the base (default) layer"))
+                                   "设置该层为基础（默认）层"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("TG",
-                                   "Toggle layer on or off"))
+                                   "切换到该层或者切回默认层"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("TT",
-                                   "Normally acts like MO unless it's tapped multiple times, which toggles layer on"))
+                                   "按下时暂时切换到该层，连续点击多次后，切换到该层，再连续点击多次后，切回默认层"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("OSL",
-                                   "Momentarily activates layer until a key is pressed"))
+                                   "暂时切换到该层，按下下一个键后，切回默认层"))
     KEYCODES_LAYERS.extend(
         generate_keycodes_for_mask("TO",
-                                   "Turns on layer and turns off all other layers, except the default layer"))
+                                   "切换到该层 layer {} "))
 
     for x in range(min(layers, 16)):
         KEYCODES_LAYERS.append(Keycode("LT{}(kc)".format(x), "LT {}\n(kc)".format(x),
-                                       "kc on tap, switch to layer {} while held".format(x), masked=True))
+                                       "单击触发键值，长按切换到层 layer {} ".format(x), masked=True))
 
     KEYCODES_MACRO.clear()
     for x in range(keyboard.macro_count):
