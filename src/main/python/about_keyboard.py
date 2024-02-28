@@ -56,11 +56,11 @@ class AboutKeyboard(QDialog):
 
         text = ""
         desc = device.desc
-        text += "Manufacturer: {}\n".format(desc["manufacturer_string"])
-        text += "Product: {}\n".format(desc["product_string"])
-        text += "VID: {:04X}\n".format(desc["vendor_id"])
-        text += "PID: {:04X}\n".format(desc["product_id"])
-        text += "Device: {}\n".format(desc["path"])
+        text += "制造商: {}\n".format(desc["manufacturer_string"])
+        text += "产品: {}\n".format(desc["product_string"])
+        text += "供应商ID: {:04X}\n".format(desc["vendor_id"])
+        text += "产品ID: {:04X}\n".format(desc["product_id"])
+        text += "设备: {}\n".format(desc["path"])
         text += "\n"
 
         if self.keyboard.sideload:
@@ -68,23 +68,23 @@ class AboutKeyboard(QDialog):
         elif self.keyboard.vial_protocol < 0:
             text += "VIA keyboard, Vial functionality is disabled\n\n"
 
-        text += "VIA protocol: {}\n".format(self.keyboard.via_protocol)
-        text += "Vial protocol: {}\n".format(self.keyboard.vial_protocol)
-        text += "Vial keyboard ID: {:08X}\n".format(self.keyboard.keyboard_id)
+        text += "VIA接口: {}\n".format(self.keyboard.via_protocol)
+        text += "Vial接口: {}\n".format(self.keyboard.vial_protocol)
+        text += "Vial键盘ID: {:08X}\n".format(self.keyboard.keyboard_id)
         text += "\n"
 
-        text += "Macro entries: {}\n".format(self.keyboard.macro_count)
-        text += "Macro memory: {} bytes\n".format(self.keyboard.macro_memory)
-        text += "Macro delays: {}\n".format(self.about_macro_delays())
+        text += "宏功能数目: {}\n".format(self.keyboard.macro_count)
+        text += "宏功能内存: {} bytes\n".format(self.keyboard.macro_memory)
+        text += "宏功能延迟: {}\n".format(self.about_macro_delays())
         text += "Complex (2-byte) macro keycodes: {}\n".format(self.about_macro_ext_keycodes())
         text += "\n"
 
-        text += "Tap Dance entries: {}\n".format(self.about_tap_dance())
-        text += "Combo entries: {}\n".format(self.about_combo())
-        text += "Key Override entries: {}\n".format(self.about_key_override())
+        text += "按键复用Tap Dance数目: {}\n".format(self.about_tap_dance())
+        text += "组合键Combo数目: {}\n".format(self.about_combo())
+        text += "键值覆盖Key Override数目: {}\n".format(self.about_key_override())
         text += "\n"
 
-        text += "QMK Settings: {}\n".format(self.about_qmk_settings())
+        text += "QMK设置: {}\n".format(self.about_qmk_settings())
 
         font = QFont("monospace")
         font.setStyleHint(QFont.TypeWriter)
