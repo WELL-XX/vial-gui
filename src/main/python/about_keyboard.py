@@ -52,7 +52,7 @@ class AboutKeyboard(QDialog):
         super().__init__()
 
         self.keyboard = device.keyboard
-        self.setWindowTitle("About {}".format(device.title()))
+        self.setWindowTitle("关于 {}".format(device.title()))
 
         text = ""
         desc = device.desc
